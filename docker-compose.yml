@@ -1,0 +1,41 @@
+services:
+    gpu-container:
+        image: nvidia/cuda:12.4.0-runtime-ubuntu22.04
+        container_name: portfolio5-gpu-container
+        command: sleep infinity
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities: [gpu]
+        restart: always
+
+    tracking-server: 
+        build:
+            context: .
+        container_name: portfolio5-mlflow
+        ports:
+            - "5000:5000"  # 外部ポート 5001 -> 内部ポート 8080
+        restart: always
+        networks:
+            - portfolio5-network
+        environment:
+            MLFLOW_TRACKING_URI: http://0.0.0.0:5000
+        volumes:
+            - ./works:/works # ホストディレクトリをマウント
+            - ./mlruns:/works/mlruns  # MLflow の実験データを永続化
+            -  ~/.cache/torch/hub/checkpoints:/root/.cache/torch/hub/checkpoints # ダウンロード済みのモデル
+        runtime: nvidia
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities: [gpu]
+        
+networks:
+    portfolio5-network:

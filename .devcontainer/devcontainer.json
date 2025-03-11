@@ -1,0 +1,27 @@
+{
+    "name": "Portfolio5 DevContainer",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "tracking-server",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "oderwat.indent-rainbow",
+                "ms-azuretools.vscode-docker",
+                "ms-ceintl.vscode-language-pack-ja",
+                "tushortz.python-extended-snippets",
+                "streetsidesoftware.code-spell-checker",
+                "dzhavat.bracket-pair-toggler",
+                "redhat.vscode-yaml",
+                "mosapride.zenkaku",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    },
+    "remoteUser": "root",
+    "workspaceFolder": "/works"
+}
