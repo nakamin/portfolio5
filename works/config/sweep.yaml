@@ -1,0 +1,13 @@
+default:
+  - config # 基本の設定
+
+train:
+  lr: 
+    - 0.0001
+    - 0.0005
+    - 0.001
+  batch_size:
+    - 16
+    - 32
+
+# 実行コマンドは、python train.py -m

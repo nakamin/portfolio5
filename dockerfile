@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     sudo \
     wget \
     vim \
+    libgl1-mesa-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Conda 環境パスを正しく設定

@@ -1,2 +1,13 @@
 /works/data
+/works/mlruns
+/works/*.pth
+/works/models
+/works/multirun
+/works/outputs
+
 /test
+
+
+# Pythonキャッシュファイル
+__pycache__/
+/works/datasets/__pycache__/

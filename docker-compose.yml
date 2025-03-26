@@ -26,7 +26,7 @@ services:
             MLFLOW_TRACKING_URI: http://0.0.0.0:5000
         volumes:
             - ./works:/works # ホストディレクトリをマウント
-            - ./mlruns:/works/mlruns  # MLflow の実験データを永続化
+            #- ./mlruns:/works/mlruns  # MLflow の実験データを永続化
             -  ~/.cache/torch/hub/checkpoints:/root/.cache/torch/hub/checkpoints # ダウンロード済みのモデル
         runtime: nvidia
         deploy:

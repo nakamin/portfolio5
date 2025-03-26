@@ -1,0 +1,33 @@
+# 出力ディレクトリをランごとに分ける
+hydra:
+  run:
+    dir: ./outputs/${now:%Y-%m-%d_%H-%M-%S}/${hydra.job.num}
+
+experiment:
+  seed: 42
+
+dataset:
+  metadata_csv: "data/HAM10000_metadata"
+  image_dir: "data/images"
+  dataset_name: "HAM10000"
+  num_classes:  7
+
+train:
+  batch_size: 32
+  lr: 0.0001
+  epochs: 10
+  model_name: "legacy_xception"
+  criterion: "CrossEntropyLoss"
+  optimizer: "Adam"
+  target_layer: conv3
+
+scheduler:
+  step_size: 5
+  gamma: 0.5
+
+mlflow:
+  experiment_name: "2503_skin_cancer_classification"
+  experiment: "skin_cancer_classification"
+
+gradcam:
+  output_dir: outputs/gradcam
